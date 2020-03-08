@@ -13,15 +13,11 @@ public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO )
-    private int id;
+    private Long id;
 
     @NotBlank
     @Size(max = 125)
     private String name;
-
-    @NotBlank
-    @Size(max = 125)
-    private String address;
 
     @NotBlank
     @Size(max = 12)
@@ -32,6 +28,11 @@ public class User {
     @NotBlank
     @Size(max= 52)
     private String pin;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "loanId", referencedColumnName = "id")
+    private Loan loan;
+
 
 
 }

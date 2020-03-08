@@ -1,16 +1,21 @@
 package com.oaf.demo.service;
 
-import com.oaf.demo.dto.LoginDetails;
-import com.oaf.demo.dto.UserDetails;
+import com.oaf.demo.dto.request.LoginDetails;
+import com.oaf.demo.dto.request.UserDetails;
+import com.oaf.demo.dto.response.CreateUserResponse;
+import com.oaf.demo.dto.response.MyResponse;
+import com.oaf.demo.dto.response.UserInfo;
 import com.oaf.demo.model.User;
+
+import java.util.Optional;
 
 public interface UserInterface {
 
-    User createUser(UserDetails newUser);
+    CreateUserResponse createUser(UserDetails newUser);
 
-    User getUser(String Id);
+    UserInfo setUserInfo(Optional<User> optionalUser);
 
-    User updateUserDetails(String Id, UserDetails updateInfo);
+    MyResponse<User> updateUserDetails(String Id, UserDetails updateInfo);
 
     void login(LoginDetails loginDetails);
 }
