@@ -1,4 +1,4 @@
-package com.oaf.demo.dto;
+package com.oaf.demo.dto.request;
 
 
 import lombok.Data;
