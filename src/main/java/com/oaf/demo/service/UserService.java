@@ -7,6 +7,7 @@ import com.oaf.demo.dto.response.CreateUserResponse;
 import com.oaf.demo.dto.response.MyResponse;
 import com.oaf.demo.dto.response.UserInfo;
 import com.oaf.demo.exception.UserAlreadyExistsException;
+import com.oaf.demo.model.Loan;
 import com.oaf.demo.model.User;
 import com.oaf.demo.repository.LoanRepository;
 import com.oaf.demo.repository.UserRepository;
@@ -24,13 +25,15 @@ public class UserService implements UserInterface {
     private UserRepository userRepository;
     private ModelMapper modelMapper;
     private LoanRepository loanRepository;
+    private LoanService loanService;
 
     @Autowired
     public UserService(UserRepository userRepository, ModelMapper modelMapper
-            ,LoanRepository loanRepository){
+            ,LoanRepository loanRepository, LoanService loanService){
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.loanRepository = loanRepository;
+        this.loanService = loanService;
 
     }
 
@@ -45,6 +48,9 @@ public class UserService implements UserInterface {
             User user = modelMapper.map(newUser, User.class);
             response.setName(user.getName());
             response.setAccountNumber(user.getPhoneNumber());
+            Loan user_loan = loanService.createLoan();
+//            user_loan.setUser(user);
+            response.setCurrentLoan(user_loan.getLoanAmount());
             userRepository.save(user);
         }
         return response;
