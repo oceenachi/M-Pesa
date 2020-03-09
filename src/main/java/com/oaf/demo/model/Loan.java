@@ -15,7 +15,7 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long interestRate;
+    private String interestRate = "12%";
 
     @NotBlank
     private Long loanAmount;

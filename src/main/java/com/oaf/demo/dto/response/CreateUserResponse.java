@@ -8,4 +8,6 @@ public class CreateUserResponse {
     private String name;
 
     private String accountNumber;
+
+    private Long currentLoan;
 }

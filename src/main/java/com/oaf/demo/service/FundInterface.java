@@ -4,5 +4,5 @@ import org.springframework.http.ResponseEntity;
 
 public interface FundInterface {
 
-    ResponseEntity<?> fundAccount(Long amount);
+    ResponseEntity<?> fundAccount(Double amount, Long id);
 }
