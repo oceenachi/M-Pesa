@@ -14,5 +14,7 @@ public class UserDetails {
 
     private String pin;
 
-   private Loan loan;
+//   private Loan loan;
+
+
 }

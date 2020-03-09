@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
@@ -19,6 +19,11 @@ public class UserController {
 
     public UserController(UserService userService){
         this.userService = userService;
+    }
+
+    @GetMapping("/health")
+    public String checkStatus(){
+        return "we are here at register. all's good";
     }
 
     @PostMapping("/create")
@@ -29,7 +34,7 @@ public class UserController {
     }
 
     @PutMapping("{id}")
-    public  MyResponse<User> updateUserInfo(@PathVariable("id") String id, @RequestBody UserDetails update){
+    public  MyResponse<UserDetails> updateUserInfo(@PathVariable("id") String id, @RequestBody UserDetails update){
         return userService.updateUserDetails(id, update);
     }
 

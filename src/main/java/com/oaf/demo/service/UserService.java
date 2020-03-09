@@ -39,7 +39,7 @@ public class UserService implements UserInterface {
         Optional<String> existingPhoneNumber = userRepository.findByPhoneNumber(newUser.getPhoneNumber());
         CreateUserResponse response = new CreateUserResponse();
         if(existingPhoneNumber.isPresent()){
-            throw new UserAlreadyExistsException("Sorry " + newUser.getName() + "already exists");
+            throw new UserAlreadyExistsException("Sorry " + newUser.getName() + " already exists");
         }
         else{
             User user = modelMapper.map(newUser, User.class);
@@ -63,7 +63,7 @@ public class UserService implements UserInterface {
     }
 
     @Override
-    public MyResponse<User> updateUserDetails(String Id, UserDetails updateInfo) {
+    public MyResponse<UserDetails> updateUserDetails(String Id, UserDetails updateInfo) {
         Optional<User> optionalUser = userRepository.findById(Long.parseLong(Id));
         if(updateInfo.getName() != null) {
             optionalUser.get().setName(updateInfo.getName());
@@ -73,7 +73,7 @@ public class UserService implements UserInterface {
         }
 
         userRepository.save(optionalUser.get());
-        MyResponse<User> update = new MyResponse<User>(HttpStatus.OK, "User updated successfully", optionalUser.get() );
+        MyResponse<UserDetails> update = new MyResponse<UserDetails>(HttpStatus.OK, "User updated successfully", updateInfo );
 
         return update;
 

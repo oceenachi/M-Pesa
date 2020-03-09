@@ -15,7 +15,7 @@ public interface UserInterface {
 
     UserInfo setUserInfo(Optional<User> optionalUser);
 
-    MyResponse<User> updateUserDetails(String Id, UserDetails updateInfo);
+    MyResponse<UserDetails> updateUserDetails(String Id, UserDetails updateInfo);
 
     void login(LoginDetails loginDetails);
 }
