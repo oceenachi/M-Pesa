@@ -18,13 +18,13 @@ import java.util.Optional;
 public interface BankDetailsRepository extends JpaRepository<BankDetails, Long> {
 
 
-    @Query("UPDATE BankDetails bank_details SET bank_details.amount = ?2 WHERE bank_details.id = ?1")
+    @Query("UPDATE BankDetails bank_details SET bank_details.amount = ?1 WHERE bank_details.id = ?2")
     @Transactional
     @Modifying
-    Long updateAccount(Double amount, Long id);
+    void updateAccount(Double amount, Long id);
 
 
     @Query("SELECT bank_details.amount FROM BankDetails bank_details where bank_details.id = ?1")
-    Double getCurrentLoan(Long id);
+    Double getAccountBalance (Long id);
 
 }

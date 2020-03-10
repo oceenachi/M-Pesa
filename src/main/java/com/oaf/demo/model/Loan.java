@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 
 @Data
@@ -17,10 +18,10 @@ public class Loan {
 
     private String interestRate = "12%";
 
-    @NotBlank
+    @NotNull
     private Long loanAmount;
-
-    @OneToOne(mappedBy = "loan")
-    private User user;
+//
+//    @OneToOne(mappedBy = "loan")
+//    private User user;
 
 }

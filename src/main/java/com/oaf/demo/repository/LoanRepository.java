@@ -14,11 +14,9 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
     @Query("SELECT loan.loanAmount FROM Loan loan where loan.id = ?1")
     Long getLoanAmount(Long id);
 
-
     @Transactional
     @Modifying
     @Query("UPDATE Loan loan SET loan.loanAmount = ?1 WHERE loan.id = ?2")
     void updateLoanAmount(Long amount, Long Id);
-
 
 }
